@@ -6,7 +6,7 @@ const Home = () => {
       <HomeNavBar />
 
       <div className="bg-light">
-               {/* Recently Add Books */}
+              
       <div className="">
         <strong className="fs-4 m-3">Recently Add Books</strong>
         <div className="row m-3 ">
