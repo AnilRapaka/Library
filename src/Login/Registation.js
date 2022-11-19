@@ -158,7 +158,7 @@ if(gender=="")
           value={mobile} onChange={(e)=>setMobile(e.target.value)} /></td>
           </tr>
           <tr>
-            <td></td>
+           
           <td><small className='text-danger'>{mb}</small></td>
           
           </tr>
