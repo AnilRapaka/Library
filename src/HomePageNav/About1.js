@@ -1,13 +1,11 @@
 import React from "react";
-import HomeNavBar from "../HomePageNav/HomeNavBar";
 import { HiHome } from 'react-icons/hi';
 import { MdAddCall } from 'react-icons/md';
 import { TfiEmail } from 'react-icons/tfi';
-const About = () => {
-    return (
+const About1=()=>{
+    return(
         <>
-            <HomeNavBar />
-            <div className="m-5">
+        <div className="m-5">
                 <div className="card bg-light">
                     <div className="card-body">
 
@@ -75,6 +73,5 @@ const About = () => {
             </div>
         </>
     )
-
 }
-export default About;
+export default About1;

@@ -1,23 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
 import{Routes,Route} from "react-router-dom";
-import Home from './HomePage/Home';
-import ContactUs from "./RentForBook/RentBook";
-import About from './HomePage/About';
-import OurBooks from './OurBooks/OurBooks';
 import Login from './Login/Login';
-import RentBook from './RentForBook/RentBook';
 import Register from './Login/Registation';
+import UserPage from './UserPage/UserPage';
+import UserBooks from './UserPage/UserBooks';
+import UserAbout from './UserPage/UserAbout';
+import UserRent from './UserPage/UserRent';
+import AdminHome from './AdminPage/AdminHome';
+import AllBooks from './AdminPage/AllBooks';
+import AddBooks from './AdminPage/AddBooks';
+import BooksActions from './AdminPage/BooksActions';
+
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={< Home/>}/>
-      <Route path="/rent" element={<RentBook/>}/>
-      <Route path="/about" element={<About/>}/>
-      <Route path="/our_books" element={<OurBooks/>}/>
-      <Route path="/login" element={<Login/>}/>
+      <Route path="/" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
+         {/* User Page */}
+      <Route path='/user' element={<UserPage/>}/>
+      <Route path="/userbooks" element={<UserBooks/>}/>
+      <Route path="/UserAbout" element={<UserAbout/>}/>
+      <Route path="/UserRent" element={<UserRent/>}/>
+
+      {/* Admin Page */}
+      <Route path="/admin" element={<AdminHome/>}/>
+      <Route path="/adminbooks" element={<AllBooks/>}/>
+      <Route path="/add_books" element={<AddBooks/>}/>
+      <Route path="/actions" element={<BooksActions/>}/>
+
     </Routes>
     
   );

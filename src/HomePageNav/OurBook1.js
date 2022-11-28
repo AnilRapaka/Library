@@ -1,10 +1,8 @@
 import React from "react";
-import HomeNavBar from "../HomePageNav/HomeNavBar";
-const OurBooks = () => {
-    return (
+const OurBook1=()=>{
+    return(
         <>
-            <HomeNavBar />
-            <div className=" m-5 card bg-light">
+        <div className=" m-5 card bg-light">
                 <div className="card-body">
                     <div className="row">
                         <div className="col-lg-8">
@@ -47,4 +45,4 @@ const OurBooks = () => {
         </>
     )
 }
-export default OurBooks;
+export default OurBook1;

@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import HomeNavBar from '../HomePageNav/HomeNavBar';
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import { ImBooks } from 'react-icons/im';
+// import UserNavBar from '../HomePageNav/UserNavBar';
+// import { createContext } from 'react';
 const Login = () => {
         
   const [user,setUser]=useState("");
   const [password,setPassword]=useState("");
-
+  const Navigate=useNavigate();
+  // const [name,setName]=useEffect("");
+  // const userContex=createContext();
   //validation messages
   const [nm,setNm]=useState("");
   const [pass,setPass]=useState("");
+  let count=0;
    const valid=(e)=>{
     if(user=="")
   {
-    setNm("Please Enter UserName")
+    setNm("Please Enter Email")
   }
   else
   {
-    setNm(" ")
+    setNm(" ");
+    count++;
   }
   if(password=="")
   {
@@ -24,17 +32,66 @@ const Login = () => {
   }
   else
   {
-    setPass(" ")
+    setPass(" ");
+    count++;
+    
+  }
+  if(count==2)
+  {
+    Login();
   }
 }
+const  Login=()=>{
+  axios.get(`http://localhost:2520/getDetails/${user}`).then((res) => {
+                const {data} = res;
+                //alert("success");
+               
+                console.log(res);
+                if(data.email===user && data.password===password && data.user=='user')
+                {
+                  //alert("go to user page");
+                  // setName(data.name);
+                  // SendName();
+                  sessionStorage.setItem("name",data.name);
+                 Navigate("/user"); 
+                }
+                else if(data.email===user && data.password===password && data.user=='admin')
+                {
+                  sessionStorage.setItem("name",data.name);
+                  Navigate('/admin');
+                }
+                else{
+                  setPass("Enter Valid Password");
+                }
+  },(err)=>{console.log(err)
+ setPass("Enter Valid Details");
+  })
+  
+}
+ 
    const Reset=()=>{
     setNm("");
     setPass("");
+    setUser('');
+    setPassword('');
 
   }
+
+    // const SendName=()=>{
+    //   return(
+    // <userContex.Provider value={name}>
+    //   <UserNavBar/>
+    // </userContex.Provider>
+    // )
+    // }
+
+  
   return (
     <>
-    <HomeNavBar/>
+    <div className='d-flex m-3'>
+    <ImBooks className="fs-1 "/>
+        <h4><strong>Books Library</strong></h4>
+        </div>
     <div className='bg-light  card m-2'>
     <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
 <div className='row m-5' style={{height:"500px",width:"500px"}}>
@@ -47,8 +104,8 @@ const Login = () => {
         <h3 class="text-primary">Login page</h3>
        
         <div className="mb-3">
-          <label className='text-dark fs-5'>UserName</label>
-          <input type="text" className="form-control" placeholder="UserName" name="name" id="name"
+          <label className='text-dark fs-5'>Email</label>
+          <input type="text" className="form-control" placeholder="Enter Email " name="name" id="name"
           value={user} onChange={(e)=>setUser(e.target.value)}/><br/>
           <small className='text-danger'>{nm}</small>
         </div>

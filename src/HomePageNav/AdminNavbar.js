@@ -1,7 +1,8 @@
 import React from "react";
 import { ImBooks } from 'react-icons/im';
 import { Link } from "react-router-dom";
-const HomeNavBar=()=>{
+import{CgProfile} from 'react-icons/cg';
+const AdminNavBar=()=>{
     return(
         <>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -15,11 +16,12 @@ const HomeNavBar=()=>{
             <div class="navbar-nav">
             </div>
             <div class="navbar-nav ms-auto">
-                    <Link to="/" class="nav-link text-primary" ><strong>Home</strong></Link>
-                <Link to="/our_books" class="nav-item nav-link text-primary"><strong>Our Books</strong></Link>
-                <Link to="/about" class="nav-item nav-link text-primary"><strong>AboutUs</strong></Link>
-                <Link to="/rent" class="nav-item nav-link text-primary"><strong>RentForBook</strong></Link>
-                <Link to="/login" class="nav-item nav-link text-primary" ><strong>Login</strong></Link>
+                    <Link to="/admin" class="nav-link text-primary" ><strong>Home</strong></Link>
+                <Link to="/adminbooks" class="nav-item nav-link text-primary"><strong>Books</strong></Link>
+                <Link to="/add_books" class="nav-item nav-link text-primary"><strong>AddBooks</strong></Link>
+                <Link to="/actions" class="nav-item nav-link text-primary"><strong>Update/Remove_Book</strong></Link>
+                <strong className="fs-4 mt-0 text-danger"><CgProfile/>{sessionStorage.getItem("name")} </strong>
+                <Link to="/" class="nav-item nav-link text-primary" ><strong>Logout</strong></Link>
             </div>
         </div>
     </div>
@@ -28,4 +30,4 @@ const HomeNavBar=()=>{
     )
 
 }
-export default HomeNavBar;
+export default AdminNavBar;
